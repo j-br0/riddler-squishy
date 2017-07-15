@@ -22,8 +22,8 @@ def graph_payouts():
         bestof.append(i)
         payout.append(series_payout(i))
     plt.plot(bestof, payout)
-    plt.xlabel("Best of")
-    plt.ylabel("Expected Payout \n $")
+    plt.xlabel("Best of \n (games)")
+    plt.ylabel("Expected payout \n ($)")
     plt.ylim(0,1000000)
     plt.show()
     
