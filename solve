@@ -1,0 +1,25 @@
+from math import factorial
+
+def combination(x,y):
+    return factorial(x) / (factorial(y) * factorial(x-y))
+
+def series_payout(n):
+    win = n / 2 + 1
+    maxloss = win - 1
+    payout = 1000000 - (win * 10000)
+    odds = .6 ** win # start with odds of a sweep
+    loss = 0
+    for i in range(maxloss): # add odds if i+1 losses
+        loss += 1
+        odds += (.6 ** win) * (.4 ** loss) * combination(maxloss + loss,loss)
+    return odds * payout
+
+def max_payout():
+    maxgames = 0
+    maxpay = 0
+    for i in range(1, 100, 2):
+        pay = series_payout(i)
+        if pay > maxpay:
+            maxgames = i
+            maxpay = pay
+    return maxgames, maxpay
