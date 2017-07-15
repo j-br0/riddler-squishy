@@ -23,3 +23,5 @@ def max_payout():
             maxgames = i
             maxpay = pay
     return maxgames, maxpay
+
+print max_payout()
